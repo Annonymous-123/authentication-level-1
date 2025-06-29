@@ -36,14 +36,14 @@ app.post('/register', async (req, res) => {
   const email = req.body.username;
   const password = req.body.password;
   try {
-    const emailCheck = await db.query('SELECT * FROM USERS WHERE EMAIL=$1', [
+    const emailCheck = await pool.query('SELECT * FROM USERS WHERE EMAIL=$1', [
       email,
     ]);
 
     if (emailCheck.rows.length > 0) {
       res.send('Email already registered. Please login');
     } else {
-      await db.query('INSERT INTO USERS (email,password) VALUES($1,$2)', [
+      await pool.query('INSERT INTO USERS (email,password) VALUES($1,$2)', [
         email,
         password,
       ]);
