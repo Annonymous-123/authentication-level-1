@@ -12,7 +12,7 @@ const { Pool } = pg;
 
 const pool = new Pool({
   connectionString:
-    'postgresql://postgres:Yo^2HoneySingh@db.icozxkvwpkafsfrrgudh.supabase.co:5432/postgres',
+    'postgresql://postgres.icozxkvwpkafsfrrgudh:Yo^2HoneySingh@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres',
   ssl: {
     rejectUnauthorized: false,
   },
