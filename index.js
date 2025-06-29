@@ -70,9 +70,7 @@ app.post('/login', async (req, res) => {
      else{
        res.send('Incorrect Password');
      }
-      if()
-      res.send('Email already registered. Please login');
-    } else {
+       else {
      res.send("User not found");
     }
   } catch (err) {
