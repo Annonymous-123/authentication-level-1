@@ -55,7 +55,7 @@ app.post('/register', async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-  const email = req.body.username;
+ const email = req.body.username;
   const password = req.body.password;
   try {
     const emailCheck = await pool.query('SELECT * FROM USERS WHERE EMAIL=$1', [
@@ -70,10 +70,12 @@ app.post('/login', async (req, res) => {
      else{
        res.send('Incorrect Password');
      }
+    }
        else {
      res.send("User not found");
     }
-  } catch (err) {
+  }
+   catch (err) {
     console.log(err);
   }
 });
