@@ -54,7 +54,31 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.post('/login', async (req, res) => {});
+app.post('/login', async (req, res) => {
+  const email = req.body.username;
+  const password = req.body.password;
+  try {
+    const emailCheck = await pool.query('SELECT * FROM USERS WHERE EMAIL=$1', [
+      email,
+    ]);
+
+    if (emailCheck.rows.length > 0) {
+     const user=emailCheck.rows[0];
+     if(user.password===password){
+       res.render('secrets.ejs');
+     }
+     else{
+       res.send('Incorrect Password');
+     }
+      if()
+      res.send('Email already registered. Please login');
+    } else {
+     res.send("User not found");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
